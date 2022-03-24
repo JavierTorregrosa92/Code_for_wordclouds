@@ -1,0 +1,43 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+from wordcloud import WordCloud, STOPWORDS
+
+stopwords = set(STOPWORDS)
+
+
+
+####Change the path to the document.
+
+f = open('C:/Users/XXX/Desktop/abstracts_articulos.txt','r')
+text = f.readlines()
+text_s = str(text)
+print(text_s)
+
+
+
+
+####Useful if you want to add extra terms to the stopwords list. Here you can find an example. 
+
+stop_words = list(stopwords) + ["Model", "models", "system", "systems", "proposed", "propose", "method", "n'", "data", "using", "result", "technique", "work", "task", "provide", "stage", "due", "large", "new", "based", "â", "problem", "used", "approach", "paper", "existing", "use", "well", "methods", "study", "different", "show", "techniques", "results", "algorithm", "improve", "training"]
+
+print(stop_words)
+
+
+####Generate n wordclouds based on our interests. If you don't want them to be downloaded, comment the last line of this section (wordcloud.to_file)
+
+for i in [10, 20, 30, 40, 50, 60]:
+    wordcloud = WordCloud(width = 800, height = 800, max_words = i,
+                    background_color ='white',
+                    stopwords = stop_words,
+                    min_font_size = 10).generate(text_s)
+
+    # plot the WordCloud image					
+    plt.figure(figsize = (8, 8), facecolor = None)
+    plt.imshow(wordcloud)
+    plt.axis("off")
+    plt.tight_layout(pad = 0)
+
+    plt.show()
+    
+    ###Change the path to fit with the folder where you want to download the n wordclouds
+    wordcloud.to_file("C:/Users/Javi/Desktop/wordcloud_" + str(i) + ".png")
