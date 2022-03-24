@@ -40,4 +40,4 @@ for i in [10, 20, 30, 40, 50, 60]:
     plt.show()
     
     ###Change the path to fit with the folder where you want to download the n wordclouds
-    wordcloud.to_file("C:/Users/Javi/Desktop/wordcloud_" + str(i) + ".png")
+    wordcloud.to_file("C:/Users/XXXX/Desktop/wordcloud_" + str(i) + ".png")
